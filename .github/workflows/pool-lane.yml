@@ -444,6 +444,10 @@ jobs:
         shell: node .pool-trusted/tooling/ci/quiet-step.mjs --name "Sandbox money cannot grant a production unlock" --default-shell {0}
         if: ${{ !cancelled() }}
         run: node tooling/ci/assert-money-config.mjs
+      - name: One rate-limit namespace, one binding, in each Cloudflare account
+        shell: node .pool-trusted/tooling/ci/quiet-step.mjs --name "One rate-limit namespace, one binding, in each Cloudflare account" --default-shell {0}
+        if: ${{ !cancelled() }}
+        run: node tooling/ci/assert-ratelimit-namespaces-unique.mjs
       - name: A stored notification replayed in any order reaches the same entitlement
         shell: node .pool-trusted/tooling/ci/quiet-step.mjs --name "A stored notification replayed in any order reaches the same entitlement" --default-shell {0}
         run: node tooling/ops/money-dry-run.mjs
